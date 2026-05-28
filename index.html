@@ -1,0 +1,872 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lay-Z Bone Lodge — Big Trees, California</title>
+  <meta name="description" content="Vintage camp vibes meet modern amenities at Lay-Z Bone Lodge in Big Trees/Dorrington, CA. 3BR, sleeps 9. Game room, fireplace, jetted tub, and endless Sierra adventures.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600&family=Abril+Fatface&display=swap" rel="stylesheet">
+  <style>
+    /* ── Reset ──────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    img { max-width: 100%; display: block; }
+
+    /* ── Tokens ─────────────────────────────────── */
+    :root {
+      --green-darkest: #1A3012;
+      --green-dark:    #2C4A1E;
+      --green-mid:     #4A7A35;
+      --green-light:   #6B9E55;
+      --brown-dark:    #6B4A2A;
+      --brown-mid:     #8B6547;
+      --brown-light:   #C49A70;
+      --cream:         #F5EFE4;
+      --cream-mid:     #EDE3D4;
+      --cream-dark:    #E0D3C0;
+      --text-dark:     #2A1F18;
+      --text-mid:      #5A4535;
+      --text-light:    #8A7262;
+      --gold:          #C8852A;
+      --white:         #FFFFFF;
+      --shadow-sm:  0 2px 12px rgba(44,74,30,.08);
+      --shadow-md:  0 4px 28px rgba(44,74,30,.14);
+      --shadow-lg:  0 8px 50px rgba(44,74,30,.2);
+    }
+
+    /* ── Base ───────────────────────────────────── */
+    html  { scroll-behavior: smooth; font-size: 16px; }
+    body  { font-family: 'Inter', sans-serif; background: var(--cream); color: var(--text-dark); line-height: 1.6; overflow-x: hidden; }
+    h1, h2, h3, h4 { font-family: 'Playfair Display', serif; line-height: 1.15; }
+    h1 { font-size: clamp(2.6rem, 6vw, 5.2rem); }
+    h2 { font-size: clamp(1.9rem, 3.5vw, 2.8rem); }
+    h3 { font-size: clamp(1.15rem, 2vw, 1.45rem); }
+    p  { line-height: 1.8; color: var(--text-mid); }
+    a  { text-decoration: none; }
+
+    /* ── Nav ────────────────────────────────────── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+      padding: 1.4rem 2.5rem;
+      display: flex; align-items: center; justify-content: space-between;
+      transition: background .35s, box-shadow .35s, padding .3s;
+    }
+    nav.pinned {
+      background: rgba(245,239,228,.97);
+      backdrop-filter: blur(12px);
+      box-shadow: var(--shadow-sm);
+      padding: 1rem 2.5rem;
+    }
+    .nav-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.15rem; font-weight: 700;
+      color: var(--white); letter-spacing: .03em;
+      transition: color .3s;
+    }
+    nav.pinned .nav-logo { color: var(--green-dark); }
+    .nav-links { display: flex; align-items: center; gap: 2rem; }
+    .nav-links a {
+      font-size: .8rem; font-weight: 500; letter-spacing: .1em;
+      text-transform: uppercase; color: rgba(255,255,255,.8);
+      transition: color .2s;
+    }
+    nav.pinned .nav-links a { color: var(--text-mid); }
+    .nav-links a:hover { color: var(--white); }
+    nav.pinned .nav-links a:hover { color: var(--green-dark); }
+    .nav-book {
+      background: var(--green-dark);
+      color: var(--white) !important;
+      padding: .6rem 1.4rem;
+      border-radius: 4px;
+      font-size: .78rem !important; font-weight: 600 !important;
+      letter-spacing: .08em !important; text-transform: uppercase;
+      transition: background .2s, transform .2s, box-shadow .2s !important;
+      box-shadow: 0 2px 12px rgba(44,74,30,.3);
+    }
+    .nav-book:hover { background: var(--green-mid) !important; transform: translateY(-1px); box-shadow: var(--shadow-md) !important; }
+    nav.pinned .nav-book { background: var(--green-dark); color: var(--white) !important; }
+
+    /* ── Hero ───────────────────────────────────── */
+    .hero {
+      height: 100vh; min-height: 640px;
+      position: relative; overflow: hidden;
+      display: flex; align-items: center; justify-content: center;
+      background: linear-gradient(175deg, #0f1f0a 0%, #1A3012 30%, #2C4A1E 65%, #3d6b2b 100%);
+    }
+    .hero-bg {
+      position: absolute; inset: 0;
+      background: linear-gradient(to bottom, rgba(15,31,10,.25) 0%, rgba(15,31,10,.65) 100%);
+      background-image: url('photos/hero.jpg');
+      background-size: cover;
+      background-position: center;
+    }
+    .hero-mountains { position: absolute; bottom: 0; left: 0; right: 0; pointer-events: none; }
+    .hero-content {
+      position: relative; z-index: 2;
+      text-align: center; color: var(--white);
+      padding: 2rem 1.5rem; max-width: 820px;
+    }
+    .hero-eyebrow {
+      font-size: .72rem; letter-spacing: .28em; text-transform: uppercase;
+      color: var(--green-dark); font-weight: 600; margin-bottom: 1.2rem;
+    }
+    .hero-title { color: var(--green-dark); margin-bottom: .9rem; font-family: 'Abril Fatface', serif; }
+    .hero-tagline {
+      font-family: 'Playfair Display', serif; font-style: italic;
+      font-size: clamp(1rem, 2.5vw, 1.3rem);
+      color: var(--green-dark); margin-bottom: 2.2rem;
+    }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: .55rem;
+      background: rgba(255,255,255,.12); backdrop-filter: blur(10px);
+      border: 1px solid rgba(255,255,255,.22);
+      border-radius: 50px; padding: .55rem 1.3rem;
+      font-size: .82rem; color: var(--green-dark); margin-bottom: 2.2rem;
+    }
+    .badge-stars { color: #FFD166; letter-spacing: 2px; font-size: .9rem; }
+    .hero-cta {
+      display: inline-block; background: var(--cream); color: var(--green-dark);
+      padding: 1.1rem 2.8rem; border-radius: 4px;
+      font-weight: 700; font-size: .95rem; letter-spacing: .07em; text-transform: uppercase;
+      transition: all .25s; box-shadow: 0 6px 28px rgba(0,0,0,.28);
+    }
+    .hero-cta:hover { background: var(--white); transform: translateY(-2px); box-shadow: 0 10px 40px rgba(0,0,0,.32); }
+    .hero-credit {
+      position: absolute; bottom: 1rem; left: 1.2rem; z-index: 2;
+      font-size: .62rem; color: rgba(255,255,255,.35);
+      letter-spacing: .06em;
+    }
+    .hero-scroll {
+      position: absolute; bottom: 2.5rem; left: 50%; transform: translateX(-50%);
+      z-index: 2; display: flex; flex-direction: column; align-items: center; gap: .45rem;
+      color: rgba(255,255,255,.75); font-size: .68rem; letter-spacing: .2em; text-transform: uppercase;
+    }
+    .scroll-bar {
+      width: 1px; height: 44px;
+      background: linear-gradient(to bottom, rgba(255,255,255,.9), transparent);
+      animation: pulse 2.2s ease-in-out infinite;
+    }
+    @keyframes pulse { 0%,100%{opacity:.4} 50%{opacity:1} }
+
+    /* ── Stats Bar ──────────────────────────────── */
+    .stats-bar { background: var(--green-dark); padding: 0 2rem; }
+    .stats-inner { max-width: 960px; margin: 0 auto; display: flex; flex-wrap: wrap; justify-content: center; }
+    .stat { display: flex; flex-direction: column; align-items: center; padding: 1.6rem 2.8rem; text-align: center; }
+    .stat + .stat { border-left: 1px solid rgba(255,255,255,.18); }
+    .stat-val { font-family: 'Playfair Display', serif; font-size: 1.65rem; font-weight: 700; color: var(--white); line-height: 1; }
+    .stat-lbl { font-size: .68rem; text-transform: uppercase; letter-spacing: .14em; color: rgba(255,255,255,.55); margin-top: .35rem; }
+
+    /* ── Layout helpers ─────────────────────────── */
+    .section  { padding: 6rem 2rem; }
+    .container { max-width: 1100px; margin: 0 auto; }
+    .eyebrow  { font-size: .72rem; letter-spacing: .22em; text-transform: uppercase; color: var(--green-mid); font-weight: 600; margin-bottom: .7rem; display: block; }
+
+    /* ── About ──────────────────────────────────── */
+    .about-section { background: var(--cream); }
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
+    .about-text h2 { color: var(--text-dark); margin-bottom: 1.4rem; }
+    .about-text p  { margin-bottom: 1rem; }
+    .about-features { display: flex; flex-direction: column; gap: 1.1rem; margin-top: 2rem; }
+    .feat { display: flex; align-items: flex-start; gap: 1rem; }
+    .feat-icon { width: 46px; height: 46px; flex-shrink: 0; background: var(--green-dark); color: var(--white); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.25rem; }
+    .feat-text strong { display: block; font-size: .9rem; font-weight: 600; color: var(--text-dark); margin-bottom: .12rem; }
+    .feat-text span   { font-size: .83rem; color: var(--text-light); }
+    .img-stack { position: relative; padding-bottom: 2.5rem; padding-right: 2.5rem; }
+    .img-card { border-radius: 10px; overflow: hidden; position: relative; transition: box-shadow .3s; }
+    .img-card:hover { box-shadow: var(--shadow-lg); }
+    .img-main { aspect-ratio: 4/3; background: linear-gradient(145deg, #2C4A1E 0%, #4A7A35 50%, #8B6547 100%); }
+    .img-secondary { position: absolute; bottom: 0; right: 0; width: 52%; aspect-ratio: 1; background: linear-gradient(145deg, #8B6547 0%, #C49A70 100%); border: 5px solid var(--cream); }
+    .img-cap { position: absolute; bottom: .9rem; left: .9rem; background: rgba(15,31,10,.55); color: rgba(255,255,255,.85); font-size: .68rem; padding: .28rem .65rem; border-radius: 3px; letter-spacing: .05em; backdrop-filter: blur(6px); }
+
+    /* ── Overachiever / Underachiever ───────────── */
+    .oa-section { background: var(--green-dark); }
+    .oa-header { text-align: center; margin-bottom: 3.5rem; }
+    .oa-header .eyebrow { color: rgba(255,255,255,.5); }
+    .oa-header h2 { color: var(--white); margin-top: .5rem; }
+    .oa-header p  { color: rgba(255,255,255,.6); margin-top: .75rem; max-width: 520px; margin-left: auto; margin-right: auto; }
+    .oa-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
+    .oa-col {
+      background: rgba(255,255,255,.07); border: 1px solid rgba(255,255,255,.1);
+      border-radius: 12px; padding: 2.2rem 2rem;
+    }
+    .oa-col-title {
+      font-family: 'Playfair Display', serif; font-style: italic;
+      font-size: 1.4rem; color: var(--white); margin-bottom: 1.5rem;
+      display: flex; align-items: center; gap: .75rem;
+    }
+    .oa-col-title span { font-size: 1.6rem; }
+    .oa-list { list-style: none; display: flex; flex-direction: column; gap: .75rem; }
+    .oa-item { font-size: .88rem; color: rgba(255,255,255,.72); display: flex; align-items: flex-start; gap: .65rem; line-height: 1.55; }
+    .oa-dot { width: 5px; height: 5px; background: rgba(255,255,255,.35); border-radius: 50%; flex-shrink: 0; margin-top: .55rem; }
+
+    /* ── Gallery ────────────────────────────────── */
+    .gallery-section { background: var(--cream-mid); }
+    .gallery-header { text-align: center; margin-bottom: 3rem; }
+    .gallery-header h2 { color: var(--text-dark); margin-top: .5rem; }
+    .gallery-grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: .65rem; }
+    .gc { border-radius: 7px; overflow: hidden; position: relative; cursor: pointer; }
+    .gc .gimg { width: 100%; height: 100%; object-fit: cover; transition: transform .45s; display: block; }
+    .gc:hover .gimg { transform: scale(1.05); }
+    .gc-overlay { position: absolute; inset: 0; background: rgba(44,74,30,.3); opacity: 0; transition: opacity .3s; display: flex; align-items: flex-end; }
+    .gc:hover .gc-overlay { opacity: 1; }
+    .gc-label { color: rgba(255,255,255,.9); font-size: .7rem; padding: .6rem .8rem; letter-spacing: .04em; }
+    .gc-1  { grid-column: span 7; aspect-ratio: 16/10; background: linear-gradient(145deg,#1A3012,#2C4A1E,#4A7A35); }
+    .gc-2  { grid-column: span 5; aspect-ratio: 16/10; background: linear-gradient(145deg,#8B6547,#C49A70,#e8c89a); }
+    .gc-3  { grid-column: span 4; aspect-ratio: 4/3;   background: linear-gradient(145deg,#2C4A1E,#4A7A35,#6B9E55); }
+    .gc-4  { grid-column: span 4; aspect-ratio: 4/3;   background: linear-gradient(145deg,#6B4A2A,#8B6547,#C49A70); }
+    .gc-5  { grid-column: span 4; aspect-ratio: 4/3;   background: linear-gradient(145deg,#1A3012,#3d6b2b,#6B9E55); }
+    .gc-6  { grid-column: span 5; aspect-ratio: 16/10; background: linear-gradient(145deg,#4A7A35,#8B6547,#C49A70); }
+    .gc-7  { grid-column: span 4; aspect-ratio: 4/3;   background: linear-gradient(145deg,#2C4A1E,#1A3012,#0f1f0a); }
+    .gc-8  { grid-column: span 3; aspect-ratio: 4/3;   background: linear-gradient(145deg,#6B9E55,#4A7A35,#2C4A1E); }
+    .gc-9  { grid-column: span 7; aspect-ratio: 16/10; background: linear-gradient(145deg,#b8cfe0,#d6e8f5,#8aafc8); }
+    .gc-10 { grid-column: span 5; aspect-ratio: 16/10; background: linear-gradient(145deg,#1A5070,#2874a3,#4a9fd4); }
+    .gc-11 { grid-column: span 4; aspect-ratio: 4/3;   background: linear-gradient(145deg,#6B4A2A,#8B6547,#C49A70); }
+    .gc-12 { grid-column: span 4; aspect-ratio: 4/3;   background: linear-gradient(145deg,#1A5070,#4A7A35,#6B9E55); }
+    .gc-13 { grid-column: span 4; aspect-ratio: 4/3;   background: linear-gradient(145deg,#7a4a2a,#b07840,#d4a870); }
+    .gc-zoom { position: absolute; top: .75rem; right: .75rem; z-index: 2; width: 34px; height: 34px; background: rgba(255,255,255,.14); backdrop-filter: blur(6px); border: 1px solid rgba(255,255,255,.2); border-radius: 50%; display: flex; align-items: center; justify-content: center; opacity: 0; transition: opacity .25s; pointer-events: none; }
+    .gc:hover .gc-zoom { opacity: 1; }
+    .gc-zoom svg { width: 15px; height: 15px; }
+
+    /* ── Amenities ──────────────────────────────── */
+    .amenities-section { background: var(--cream); }
+    .amenities-header { margin-bottom: 3rem; }
+    .amenities-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(170px, 1fr)); gap: 1.3rem; }
+    .am-card { background: var(--cream-mid); border-radius: 10px; padding: 1.6rem 1rem; text-align: center; transition: transform .2s, box-shadow .2s; border: 1px solid transparent; }
+    .am-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); border-color: var(--cream-dark); }
+    .am-icon  { font-size: 2.1rem; margin-bottom: .7rem; display: block; }
+    .am-icon svg { width: 2.1rem; height: auto; display: block; margin: 0 auto; }
+    .am-name  { font-size: .82rem; font-weight: 600; color: var(--text-dark); line-height: 1.35; }
+    .am-sub   { font-size: .72rem; color: var(--text-light); margin-top: .2rem; }
+
+    /* ── Adventures ─────────────────────────────── */
+    .adventures-section { background: linear-gradient(rgba(0,0,0,.35), rgba(0,0,0,.35)), url('photos/buffalo-plaid-pattern.jpg') center/180px repeat; }
+    .adventures-header { margin-bottom: 3rem; }
+    .adventures-header .eyebrow { color: rgba(255,255,255,.55); }
+    .adventures-header h2 { color: var(--white); margin-top: .5rem; }
+    .adventures-header p  { color: rgba(255,255,255,.75); max-width: 520px; margin-top: .8rem; }
+    .adventures-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 1.3rem; }
+    .adv-card {
+      background: var(--white); border: 1px solid var(--cream-dark);
+      border-radius: 10px; padding: 1.8rem 1.5rem;
+      transition: background .25s, border-color .25s, transform .25s, box-shadow .25s;
+    }
+    .adv-card:hover { background: var(--white); border-color: var(--brown-light); transform: translateY(-3px); box-shadow: var(--shadow-md); }
+    .adv-dist { font-size: .68rem; letter-spacing: .12em; text-transform: uppercase; color: var(--text-light); margin-bottom: .45rem; }
+    .adv-name { font-family: 'Playfair Display', serif; font-size: 1.15rem; color: var(--text-dark); margin-bottom: .5rem; }
+    .adv-name a { color: inherit; text-decoration: none; text-underline-offset: 4px; transition: text-decoration-color .2s; }
+    .adv-card:hover .adv-name a { text-decoration: underline; text-decoration-color: var(--brown-mid); }
+    .adv-desc { font-size: .83rem; color: var(--text-mid); line-height: 1.65; }
+
+    /* ── Reviews ────────────────────────────────── */
+    .reviews-section { background: var(--cream-mid); }
+    .reviews-center  { text-align: center; margin-bottom: 4rem; }
+    .reviews-center .eyebrow { color: var(--green-mid); }
+    .reviews-big { font-family: 'Playfair Display', serif; font-size: 5.5rem; font-weight: 700; color: var(--green-dark); line-height: 1; margin: 1rem 0 .4rem; }
+    .reviews-stars { font-size: 1.8rem; color: var(--gold); letter-spacing: 4px; margin-bottom: .6rem; }
+    .reviews-sub    { font-size: .88rem; color: var(--text-light); }
+    .guest-fav { display: inline-flex; align-items: center; gap: .5rem; background: var(--green-dark); color: var(--white); font-size: .72rem; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; padding: .4rem 1rem; border-radius: 50px; margin-top: .9rem; }
+    .review-cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(290px, 1fr)); gap: 1.4rem; }
+    .rv-card { background: var(--white); border-radius: 10px; padding: 1.8rem; box-shadow: var(--shadow-sm); }
+    .rv-stars { color: var(--gold); font-size: .85rem; margin-bottom: .9rem; }
+    .rv-quote { font-size: .88rem; color: var(--text-mid); line-height: 1.75; font-style: italic; margin-bottom: 1.1rem; }
+    .rv-quote::before { content: '\201C'; }
+    .rv-quote::after  { content: '\201D'; }
+    .rv-author { font-size: .78rem; font-weight: 600; color: var(--text-dark); }
+    .rv-meta   { font-size: .72rem; color: var(--text-light); margin-top: .2rem; }
+
+    /* ── Book CTA ───────────────────────────────── */
+    .book-section { padding: 9rem 2rem; background: linear-gradient(160deg, var(--green-darkest) 0%, var(--green-dark) 100%); text-align: center; position: relative; overflow: hidden; }
+    .book-section::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 50% 60%, rgba(74,122,53,.35) 0%, transparent 68%); }
+    .book-section .container { position: relative; z-index: 1; }
+    .book-section .eyebrow { color: rgba(255,255,255,.45); }
+    .book-section h2  { color: var(--white); margin: .6rem 0 1.2rem; }
+    .book-section p   { color: rgba(255,255,255,.65); max-width: 480px; margin: 0 auto 3rem; }
+    .book-btns { display: flex; gap: 1.2rem; justify-content: center; flex-wrap: wrap; }
+    .book-btn { display: inline-block; background: var(--cream); color: var(--green-dark); padding: 1.2rem 2.8rem; border-radius: 4px; font-weight: 700; font-size: .95rem; letter-spacing: .07em; text-transform: uppercase; transition: all .25s; box-shadow: 0 5px 28px rgba(0,0,0,.3); }
+    .book-btn:hover { background: var(--white); transform: translateY(-2px); box-shadow: 0 10px 40px rgba(0,0,0,.35); }
+    .book-btn-alt { background: transparent; color: var(--white); border: 2px solid rgba(255,255,255,.45); box-shadow: none; }
+    .book-btn-alt:hover { background: rgba(255,255,255,.1); color: var(--white); border-color: rgba(255,255,255,.8); transform: translateY(-2px); box-shadow: none; }
+    .book-note { margin-top: 1.5rem; font-size: .75rem; color: rgba(255,255,255,.35); }
+    .book-details { display: flex; justify-content: center; gap: 3rem; margin-top: 3.5rem; flex-wrap: wrap; }
+    .book-detail { text-align: center; }
+    .book-detail-val { font-family: 'Playfair Display', serif; font-size: 1.2rem; color: var(--white); }
+    .book-detail-lbl { font-size: .68rem; text-transform: uppercase; letter-spacing: .12em; color: rgba(255,255,255,.4); margin-top: .2rem; }
+
+    /* ── Footer ─────────────────────────────────── */
+    footer { background: var(--text-dark); color: rgba(255,255,255,.55); padding: 4rem 2rem 2rem; }
+    .footer-grid { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 3rem; }
+    .footer-brand { font-family: 'Playfair Display', serif; font-size: 1.2rem; color: var(--white); margin-bottom: .7rem; display: block; }
+    .footer-tagline { font-size: .83rem; line-height: 1.7; max-width: 240px; }
+    .footer-h { font-size: .66rem; letter-spacing: .18em; text-transform: uppercase; color: rgba(255,255,255,.35); margin-bottom: .9rem; }
+    .footer-list { list-style: none; }
+    .footer-list li { margin-bottom: .45rem; }
+    .footer-list a { color: rgba(255,255,255,.55); font-size: .83rem; transition: color .2s; }
+    .footer-list a:hover { color: var(--white); }
+    .contact-line { font-size: .83rem; display: block; margin-bottom: .45rem; }
+    .footer-bottom { max-width: 1100px; margin: 2.5rem auto 0; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,.08); display: flex; justify-content: space-between; align-items: center; font-size: .72rem; flex-wrap: wrap; gap: 1rem; }
+    .footer-legal { color: rgba(255,255,255,.3); }
+
+    /* ── Lightbox ───────────────────────────────── */
+    .lb { position: fixed; inset: 0; z-index: 1000; background: rgba(10,16,8,.96); display: flex; align-items: center; justify-content: center; opacity: 0; pointer-events: none; transition: opacity .3s ease; }
+    .lb.active { opacity: 1; pointer-events: all; }
+    .lb-stage { position: relative; width: 90vw; max-width: 1200px; display: flex; flex-direction: column; align-items: center; }
+    .lb-img-wrap { width: 100%; display: flex; align-items: center; justify-content: center; }
+    .lb-img { max-width: 100%; max-height: 80vh; object-fit: contain; border-radius: 6px; opacity: 0; transition: opacity .3s; display: none; }
+    .lb-img.loaded { opacity: 1; }
+    .lb-placeholder { width: 100%; aspect-ratio: 16/10; max-height: 75vh; border-radius: 6px; display: none; align-items: center; justify-content: center; }
+    .lb-placeholder-label { font-family: 'Playfair Display', serif; font-style: italic; font-size: 1.3rem; color: rgba(255,255,255,.45); }
+    .lb-footer { display: flex; justify-content: space-between; align-items: center; width: 100%; padding: 1rem 0 0; }
+    .lb-caption { font-family: 'Playfair Display', serif; font-style: italic; font-size: 1rem; color: rgba(255,255,255,.8); }
+    .lb-counter { font-size: .78rem; color: rgba(255,255,255,.38); letter-spacing: .08em; }
+    .lb-close { position: fixed; top: 1.4rem; right: 1.8rem; background: none; border: none; cursor: pointer; color: rgba(255,255,255,.65); font-size: 2.2rem; line-height: 1; padding: .2rem .5rem; transition: color .2s, transform .2s; }
+    .lb-close:hover { color: var(--white); transform: scale(1.15); }
+    .lb-prev, .lb-next { position: fixed; top: 50%; transform: translateY(-50%); background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.15); border-radius: 50%; width: 54px; height: 54px; display: flex; align-items: center; justify-content: center; cursor: pointer; color: var(--white); font-size: 1.6rem; line-height: 1; backdrop-filter: blur(8px); transition: background .2s, transform .2s; }
+    .lb-prev { left: 1.5rem; }
+    .lb-next { right: 1.5rem; }
+    .lb-prev:hover { background: rgba(255,255,255,.18); transform: translateY(-50%) scale(1.05); }
+    .lb-next:hover { background: rgba(255,255,255,.18); transform: translateY(-50%) scale(1.05); }
+
+    /* ── Responsive ─────────────────────────────── */
+    @media (max-width: 900px) {
+      .about-grid { grid-template-columns: 1fr; }
+      .img-secondary { display: none; }
+      .img-stack { padding: 0; }
+      .nav-links a:not(.nav-book) { display: none; }
+      .oa-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 768px) {
+      .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+      .gc-1,.gc-2,.gc-3,.gc-4,.gc-5,.gc-6,.gc-7,.gc-8,.gc-9,.gc-10,.gc-11,.gc-12,.gc-13 { grid-column: span 1; }
+      .stat + .stat { border-left: none; }
+      .stats-inner { gap: 0; }
+      .stat { padding: 1.1rem 1.4rem; }
+      .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
+      .lb-prev { left: .4rem; }
+      .lb-next { right: .4rem; }
+      .lb-prev, .lb-next { width: 42px; height: 42px; font-size: 1.3rem; }
+      .lb-close { top: .8rem; right: .8rem; }
+    }
+    @media (max-width: 480px) {
+      .gallery-grid { grid-template-columns: 1fr; }
+      .section { padding: 4rem 1.2rem; }
+      .book-details { gap: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ═══ NAV ══════════════════════════════════════ -->
+  <nav id="nav">
+    <a href="#" class="nav-logo">Lay-Z Bone Lodge</a>
+    <div class="nav-links">
+      <a href="#about">The Cabin</a>
+      <a href="#amenities">Amenities</a>
+      <a href="#adventures">Explore</a>
+      <a href="https://www.sierravacationrentals.com/vacation-rentals/lay-z-bone-lodge-central-heat" target="_blank" rel="noopener" class="nav-book">Book Now</a>
+    </div>
+  </nav>
+
+  <!-- ═══ HERO ══════════════════════════════════════ -->
+  <section class="hero">
+    <div class="hero-bg"></div>
+
+    <!-- Mountain silhouette -->
+    <svg class="hero-mountains" viewBox="0 0 1440 280" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <polygon points="0,280 0,180 80,130 160,160 260,90 380,145 490,80 610,130 720,70 840,120 960,60 1080,110 1180,75 1300,115 1380,90 1440,105 1440,280" fill="rgba(74,122,53,.28)"/>
+      <polygon points="0,280 0,220 120,160 220,200 340,135 460,185 580,115 700,165 820,100 940,155 1060,105 1180,150 1300,120 1380,145 1440,130 1440,280" fill="rgba(44,74,30,.55)"/>
+    </svg>
+
+    <div class="hero-content">
+      <p class="hero-eyebrow">Big Trees · Dorrington, California</p>
+      <h1 class="hero-title">Lay-Z Bone Lodge</h1>
+      <p class="hero-tagline">Vintage camp vibes meet modern amenities.</p>
+      <div class="hero-badge">
+        <span class="badge-stars">★★★★★</span>
+        <span>5.0 &nbsp;·&nbsp; 15 Reviews</span>
+      </div>
+      <br>
+      <a href="https://www.sierravacationrentals.com/vacation-rentals/lay-z-bone-lodge-central-heat" target="_blank" rel="noopener" class="hero-cta">Check Availability</a>
+    </div>
+
+    <p class="hero-credit">Photo courtesy of Ami Saunders</p>
+
+    <div class="hero-scroll">
+      <span>Scroll</span>
+      <div class="scroll-bar"></div>
+    </div>
+  </section>
+
+  <!-- ═══ STATS BAR ═════════════════════════════════ -->
+  <div class="stats-bar">
+    <div class="stats-inner">
+      <div class="stat"><span class="stat-val">3</span><span class="stat-lbl">Bedrooms</span></div>
+      <div class="stat"><span class="stat-val">2.5</span><span class="stat-lbl">Bathrooms</span></div>
+      <div class="stat"><span class="stat-val">9</span><span class="stat-lbl">Guests</span></div>
+      <div class="stat"><span class="stat-val">5.0★</span><span class="stat-lbl">Guest Rating</span></div>
+      <div class="stat"><span class="stat-val">Big&nbsp;Trees</span><span class="stat-lbl">California</span></div>
+    </div>
+  </div>
+
+  <!-- ═══ ABOUT ══════════════════════════════════════ -->
+  <section class="section about-section" id="about">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-text">
+          <span class="eyebrow">The Cabin</span>
+          <h2>On the Sierra doorstep, off the beaten path.</h2>
+          <p>Welcome to Lay-Z Bone Lodge — a beautiful chalet-style cabin in the heart of Big Trees Village, where vintage camp vibes meet modern amenities. Recently remodeled, spacious, and designed for groups both large and small.</p>
+          <p>An open floor plan flows from the fully equipped kitchen to a cozy living area anchored by a wood-burning fireplace. A secret kids loft tucks away for little adventurers, while the separate extra-large game room keeps everyone entertained — rain, snow, or shine.</p>
+          <div class="about-features">
+            <div class="feat">
+              <div class="feat-icon">🏓</div>
+              <div class="feat-text">
+                <strong>Epic Game Room</strong>
+                <span>3-in-1 game table (pool, air hockey, ping pong), arcade games, board games &amp; 65" Smart TV</span>
+              </div>
+            </div>
+            <div class="feat">
+              <div class="feat-icon">✨</div>
+              <div class="feat-text">
+                <strong>Cozy Touches</strong>
+                <span>Professional electric piano, secret kids loft, vintage Bluetooth stereo &amp; a legendary mug collection</span>
+              </div>
+            </div>
+            <div class="feat">
+              <div class="feat-icon">🛌</div>
+              <div class="feat-text">
+                <strong>Sleeps 9 Comfortably</strong>
+                <span>1 King, 1 Queen, 1 Twin, 2 Twin bunks, futon + sleeper sofa</span>
+              </div>
+            </div>
+            <div class="feat">
+              <div class="feat-icon">🏖️</div>
+              <div class="feat-text">
+                <strong>Big Trees Rec Center Access</strong>
+                <span>Olympic-sized pool, tennis, pickleball, disc golf, basketball &amp; playground</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="img-stack">
+          <div class="img-card img-main">
+            <img src="photos/living-room-thumb.jpg" alt="Lay-Z Bone Lodge living room" style="width:100%;height:100%;object-fit:cover;">
+            <span class="img-cap">Living Room</span>
+          </div>
+          <div class="img-card img-secondary">
+            <img src="photos/game-room-thumb.jpg" alt="Game room" style="width:100%;height:100%;object-fit:cover;">
+            <span class="img-cap">Game Room</span>
+          </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ OVERACHIEVER / UNDERACHIEVER ══════════════ -->
+  <section class="section oa-section">
+    <div class="container">
+      <div class="oa-header">
+        <span class="eyebrow">There's Something for Everyone</span>
+        <h2>Pick your pace.</h2>
+        <p>Whether you came to conquer the Sierra or to do absolutely nothing at all — Lay-Z Bone Lodge has you covered.</p>
+      </div>
+      <div class="oa-grid">
+        <div class="oa-col">
+          <div class="oa-col-title"><span>🏔️</span> Overachiever Activities</div>
+          <ul class="oa-list">
+            <li class="oa-item"><span class="oa-dot"></span>Skiing &amp; snowboarding (downhill and cross-country)</li>
+            <li class="oa-item"><span class="oa-dot"></span>Sledding &amp; snowshoeing in winter</li>
+            <li class="oa-item"><span class="oa-dot"></span>Hiking — trails for every level</li>
+            <li class="oa-item"><span class="oa-dot"></span>Fishing in world-class Sierra streams &amp; lakes</li>
+            <li class="oa-item"><span class="oa-dot"></span>Swimming, paddleboarding &amp; kayaking</li>
+            <li class="oa-item"><span class="oa-dot"></span>Biking through the mountain foothills</li>
+            <li class="oa-item"><span class="oa-dot"></span>Exploring Calaveras Big Trees State Park</li>
+          </ul>
+        </div>
+        <div class="oa-col">
+          <div class="oa-col-title"><span>🛋️</span> Underachiever Activities</div>
+          <ul class="oa-list">
+            <li class="oa-item"><span class="oa-dot"></span>Sleeping in — you're on vacation</li>
+            <li class="oa-item"><span class="oa-dot"></span>Stargazing from the deck</li>
+            <li class="oa-item"><span class="oa-dot"></span>Soaking in the jetted tub</li>
+            <li class="oa-item"><span class="oa-dot"></span>Reading by the warm woodstove</li>
+            <li class="oa-item"><span class="oa-dot"></span>Wine tasting in nearby Murphys</li>
+            <li class="oa-item"><span class="oa-dot"></span>Burgers &amp; live music at The Lube Room</li>
+            <li class="oa-item"><span class="oa-dot"></span>Swinging in the hammock with a good book</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ GALLERY ════════════════════════════════════ -->
+  <section class="section gallery-section">
+    <div class="container">
+      <div class="gallery-header">
+        <span class="eyebrow">Photo Gallery</span>
+        <h2>We did the crafting for your relaxing.</h2>
+      </div>
+      <div class="gallery-grid">
+        <div class="gc gc-1" data-caption="Kitchen &amp; Dining" data-src="photos/kitchen-dining.jpg" data-gradient="linear-gradient(145deg,#1A3012,#2C4A1E,#4A7A35)">
+          <img class="gimg" src="photos/kitchen-dining.jpg" alt="Kitchen and Dining" loading="lazy" onerror="this.style.display='none'">
+          <div class="gc-overlay"><span class="gc-label">Kitchen &amp; Dining</span></div>
+          <span class="gc-zoom"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" xmlns="http://www.w3.org/2000/svg"><circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="22" y2="22"/><line x1="8" y1="11" x2="14" y2="11"/><line x1="11" y1="8" x2="11" y2="14"/></svg></span>
+        </div>
+        <div class="gc gc-2" data-caption="Master Bedroom" data-src="photos/master-bedroom.jpg" data-gradient="linear-gradient(145deg,#8B6547,#C49A70,#e8c89a)">
+          <img class="gimg" src="photos/master-bedroom.jpg" alt="Master Bedroom" loading="lazy" onerror="this.style.display='none'">
+          <div class="gc-overlay"><span class="gc-label">Master Bedroom</span></div>
+          <span class="gc-zoom"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" xmlns="http://www.w3.org/2000/svg"><circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="22" y2="22"/><line x1="8" y1="11" x2="14" y2="11"/><line x1="11" y1="8" x2="11" y2="14"/></svg></span>
+        </div>
+        <div class="gc gc-3" data-caption="Fireplace" data-src="photos/fireplace.jpg" data-gradient="linear-gradient(145deg,#2C4A1E,#4A7A35,#6B9E55)">
+          <img class="gimg" src="photos/fireplace.jpg" alt="Fireplace" loading="lazy" onerror="this.style.display='none'">
+          <div class="gc-overlay"><span class="gc-label">Fireplace</span></div>
+          <span class="gc-zoom"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" xmlns="http://www.w3.org/2000/svg"><circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="22" y2="22"/><line x1="8" y1="11" x2="14" y2="11"/><line x1="11" y1="8" x2="11" y2="14"/></svg></span>
+        </div>
+        <div class="gc gc-4" data-caption="Jetted Tub" data-src="photos/jetted-tub.jpg" data-gradient="linear-gradient(145deg,#6B4A2A,#8B6547,#C49A70)">
+          <img class="gimg" src="photos/jetted-tub.jpg" alt="Jetted Tub" loading="lazy" onerror="this.style.display='none'">
+          <div class="gc-overlay"><span class="gc-label">Jetted Tub</span></div>
+          <span class="gc-zoom"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" xmlns="http://www.w3.org/2000/svg"><circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="22" y2="22"/><line x1="8" y1="11" x2="14" y2="11"/><line x1="11" y1="8" x2="11" y2="14"/></svg></span>
+        </div>
+        <div class="gc gc-5" data-caption="Bunk Room" data-src="photos/bunk-room.jpg" data-gradient="linear-gradient(145deg,#1A3012,#3d6b2b,#6B9E55)">
+          <img class="gimg" src="photos/bunk-room.jpg" alt="Bunk Room" loading="lazy" onerror="this.style.display='none'">
+          <div class="gc-overlay"><span class="gc-label">Bunk Room</span></div>
+          <span class="gc-zoom"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" xmlns="http://www.w3.org/2000/svg"><circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="22" y2="22"/><line x1="8" y1="11" x2="14" y2="11"/><line x1="11" y1="8" x2="11" y2="14"/></svg></span>
+        </div>
+        <div class="gc gc-6" data-caption="Deck &amp; Views" data-src="photos/deck-views.jpg" data-gradient="linear-gradient(145deg,#4A7A35,#8B6547,#C49A70)">
+          <img class="gimg" src="photos/deck-views.jpg" alt="Deck and Views" loading="lazy" onerror="this.style.display='none'">
+          <div class="gc-overlay"><span class="gc-label">Deck &amp; Views</span></div>
+          <span class="gc-zoom"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" xmlns="http://www.w3.org/2000/svg"><circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="22" y2="22"/><line x1="8" y1="11" x2="14" y2="11"/><line x1="11" y1="8" x2="11" y2="14"/></svg></span>
+        </div>
+        <div class="gc gc-7" data-caption="Game Room" data-src="photos/game-room.jpg" data-gradient="linear-gradient(145deg,#2C4A1E,#1A3012,#0f1f0a)">
+          <img class="gimg" src="photos/game-room.jpg" alt="Game Room" loading="lazy" onerror="this.style.display='none'">
+          <div class="gc-overlay"><span class="gc-label">Game Room</span></div>
+          <span class="gc-zoom"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" xmlns="http://www.w3.org/2000/svg"><circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="22" y2="22"/><line x1="8" y1="11" x2="14" y2="11"/><line x1="11" y1="8" x2="11" y2="14"/></svg></span>
+        </div>
+        <div class="gc gc-8" data-caption="Exterior" data-src="photos/exterior.jpeg" data-gradient="linear-gradient(145deg,#6B9E55,#4A7A35,#2C4A1E)">
+          <img class="gimg" src="photos/exterior.jpeg" alt="Exterior" loading="lazy" onerror="this.style.display='none'">
+          <div class="gc-overlay"><span class="gc-label">Exterior</span></div>
+          <span class="gc-zoom"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" xmlns="http://www.w3.org/2000/svg"><circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="22" y2="22"/><line x1="8" y1="11" x2="14" y2="11"/><line x1="11" y1="8" x2="11" y2="14"/></svg></span>
+        </div>
+        <div class="gc gc-9" data-caption="Exterior · Winter" data-src="photos/exterior-snow.jpg" data-gradient="linear-gradient(145deg,#b8cfe0,#d6e8f5,#8aafc8)">
+          <img class="gimg" src="photos/exterior-snow.jpg" alt="Exterior in winter snow" loading="lazy" onerror="this.style.display='none'">
+          <div class="gc-overlay"><span class="gc-label">Exterior · Winter</span></div>
+          <span class="gc-zoom"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" xmlns="http://www.w3.org/2000/svg"><circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="22" y2="22"/><line x1="8" y1="11" x2="14" y2="11"/><line x1="11" y1="8" x2="11" y2="14"/></svg></span>
+        </div>
+        <div class="gc gc-10" data-caption="Pool &amp; Rec Center" data-src="photos/pool.jpg" data-gradient="linear-gradient(145deg,#1A5070,#2874a3,#4a9fd4)">
+          <img class="gimg" src="photos/pool.jpg" alt="Pool and Rec Center" loading="lazy" onerror="this.style.display='none'">
+          <div class="gc-overlay"><span class="gc-label">Pool &amp; Rec Center</span></div>
+          <span class="gc-zoom"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" xmlns="http://www.w3.org/2000/svg"><circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="22" y2="22"/><line x1="8" y1="11" x2="14" y2="11"/><line x1="11" y1="8" x2="11" y2="14"/></svg></span>
+        </div>
+        <div class="gc gc-11" data-caption="Guest Room" data-src="photos/guest-room.jpeg" data-gradient="linear-gradient(145deg,#6B4A2A,#8B6547,#C49A70)">
+          <img class="gimg" src="photos/guest-room.jpeg" alt="Guest Room" loading="lazy" onerror="this.style.display='none'">
+          <div class="gc-overlay"><span class="gc-label">Guest Room</span></div>
+          <span class="gc-zoom"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" xmlns="http://www.w3.org/2000/svg"><circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="22" y2="22"/><line x1="8" y1="11" x2="14" y2="11"/><line x1="11" y1="8" x2="11" y2="14"/></svg></span>
+        </div>
+        <div class="gc gc-12" data-caption="Lake Alpine" data-src="photos/lake-alpine.jpeg" data-gradient="linear-gradient(145deg,#1A5070,#4A7A35,#6B9E55)">
+          <img class="gimg" src="photos/lake-alpine.jpeg" alt="Lake Alpine" loading="lazy" onerror="this.style.display='none'">
+          <div class="gc-overlay"><span class="gc-label">Lake Alpine</span></div>
+          <span class="gc-zoom"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" xmlns="http://www.w3.org/2000/svg"><circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="22" y2="22"/><line x1="8" y1="11" x2="14" y2="11"/><line x1="11" y1="8" x2="11" y2="14"/></svg></span>
+        </div>
+        <div class="gc gc-13" data-caption="Murphys Wine Country" data-src="photos/murphys.jpg" data-gradient="linear-gradient(145deg,#7a4a2a,#b07840,#d4a870)">
+          <img class="gimg" src="photos/murphys.jpg" alt="Murphys Wine Country" loading="lazy" onerror="this.style.display='none'">
+          <div class="gc-overlay"><span class="gc-label">Murphys Wine Country</span></div>
+          <span class="gc-zoom"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" xmlns="http://www.w3.org/2000/svg"><circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="22" y2="22"/><line x1="8" y1="11" x2="14" y2="11"/><line x1="11" y1="8" x2="11" y2="14"/></svg></span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ AMENITIES ══════════════════════════════════ -->
+  <section class="section amenities-section" id="amenities">
+    <div class="container">
+      <div class="amenities-header">
+        <span class="eyebrow">Amenities</span>
+        <h2>Everything you need, nothing you don't.</h2>
+      </div>
+      <div class="amenities-grid">
+        <div class="am-card"><span class="am-icon">📶</span><div class="am-name">WiFi / Internet</div><div class="am-sub">552 Mbps</div></div>
+        <div class="am-card"><span class="am-icon">🌡️</span><div class="am-name">Central Heating &amp; AC</div></div>
+        <div class="am-card"><span class="am-icon">🔥</span><div class="am-name">Wood-Burning Fireplace</div></div>
+        <div class="am-card"><span class="am-icon">🛁</span><div class="am-name">Jetted Bathtub</div></div>
+        <div class="am-card"><span class="am-icon">🧺</span><div class="am-name">Washer / Dryer</div></div>
+        <div class="am-card"><span class="am-icon">🚗</span><div class="am-name">Garage Parking</div></div>
+        <div class="am-card"><span class="am-icon">🏓</span><div class="am-name">Game Room</div><div class="am-sub">Smart TV, pool table, air hockey, ping pong &amp; arcade</div></div>
+        <div class="am-card"><span class="am-icon">🎲</span><div class="am-name">Board Games &amp; Puzzles</div></div>
+        <div class="am-card"><span class="am-icon">📺</span><div class="am-name">Smart TV (65")</div></div>
+        <div class="am-card"><span class="am-icon">🎹</span><div class="am-name">Professional Electric Piano</div></div>
+        <div class="am-card"><span class="am-icon">📻</span><div class="am-name">Bluetooth Vintage Stereo</div></div>
+        <div class="am-card"><span class="am-icon">🧸</span><div class="am-name">Kids' Loft</div></div>
+        <div class="am-card"><span class="am-icon"><svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect x="5.5" y="1" width="1.5" height="10" rx="0.75"/><rect x="8.5" y="1" width="1.5" height="10" rx="0.75"/><rect x="11.25" y="1" width="1.5" height="10" rx="0.75"/><rect x="14" y="1" width="1.5" height="10" rx="0.75"/><rect x="17" y="1" width="1.5" height="10" rx="0.75"/><rect x="4" y="10.5" width="16" height="1.5" rx="0.75"/><rect x="1" y="9.5" width="5.5" height="1.5" rx="0.75"/><rect x="17.5" y="9.5" width="5.5" height="1.5" rx="0.75"/><path d="M4 12 L20 12 L18.5 18 L5.5 18 Z"/><rect x="5.5" y="18" width="2" height="5" rx="0.75"/><rect x="16.5" y="18" width="2" height="5" rx="0.75"/></svg></span><div class="am-name">Deck / Outdoor Seating</div></div>
+        <div class="am-card"><span class="am-icon"><svg viewBox="0 0 40 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+  <defs>
+    <linearGradient id="ham-grad" x1="0.5" y1="0" x2="0.5" y2="1">
+      <stop offset="0%" stop-color="#F06030"/>
+      <stop offset="100%" stop-color="#B83010"/>
+    </linearGradient>
+  </defs>
+  <line x1="2" y1="2" x2="8" y2="10" stroke="#A07848" stroke-width="2" stroke-linecap="round"/>
+  <line x1="38" y1="2" x2="32" y2="10" stroke="#A07848" stroke-width="2" stroke-linecap="round"/>
+  <path d="M8,10 Q20,7 32,10 Q20,28 8,10 Z" fill="url(#ham-grad)"/>
+  <path d="M10,11 Q20,9 30,11" stroke="#E07050" stroke-width="1" fill="none" opacity="0.5"/>
+  <path d="M12,15 Q20,13.5 28,15" stroke="#E07050" stroke-width="1" fill="none" opacity="0.5"/>
+  <path d="M13,19 Q20,18 27,19" stroke="#E07050" stroke-width="1" fill="none" opacity="0.5"/>
+  <circle cx="8" cy="10" r="2.5" fill="#A07848"/>
+  <circle cx="32" cy="10" r="2.5" fill="#A07848"/>
+  <line x1="7" y1="11.5" x2="4" y2="15" stroke="#A07848" stroke-width="1.2" stroke-linecap="round"/>
+  <line x1="9" y1="12.5" x2="6" y2="16" stroke="#A07848" stroke-width="1.2" stroke-linecap="round"/>
+  <line x1="33" y1="11.5" x2="36" y2="15" stroke="#A07848" stroke-width="1.2" stroke-linecap="round"/>
+  <line x1="31" y1="12.5" x2="34" y2="16" stroke="#A07848" stroke-width="1.2" stroke-linecap="round"/>
+</svg></span><div class="am-name">Hammock</div></div>
+        <div class="am-card"><span class="am-icon"><svg viewBox="0 0 24 30" fill="currentColor" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect x="10.5" y="0" width="3" height="4" rx="1.5"/><path d="M2 13 A10 9 0 0 1 22 13 Z"/><rect x="1.5" y="12" width="21" height="2.5" rx="1.25"/><path d="M1.5 14.5 Q12 23 22.5 14.5 Z"/><rect x="11" y="21.5" width="2" height="3.5" rx="1"/><rect x="11" y="24" width="2" height="6" rx="1" transform="rotate(-18 12 25)"/><rect x="11" y="24" width="2" height="6" rx="1" transform="rotate(18 12 25)"/><rect x="8" y="27.5" width="8" height="1.5" rx="0.75"/></svg></span><div class="am-name">BBQ Grill</div><div class="am-sub">w/ extra propane</div></div>
+        <div class="am-card"><span class="am-icon">🏂</span><div class="am-name">Sleds, Snowshoes &amp; Outdoor Toys</div></div>
+        <div class="am-card"><span class="am-icon">🏖️</span><div class="am-name">Rec Center Access</div><div class="am-sub">Pools, tennis, pickleball, basketball &amp; frisbee golf (seasonal)</div></div>
+        <div class="am-card"><span class="am-icon">🛋️</span><div class="am-name">Sleeper Sofa</div></div>
+        <div class="am-card"><span class="am-icon">🛌</span><div class="am-name">Bunk Bed &amp; Futon</div></div>
+        <div class="am-card"><span class="am-icon">❄️</span><div class="am-name">Snow Plow Service</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ EXPLORE THE AREA ═══════════════════════════ -->
+  <section class="section adventures-section" id="adventures">
+    <div class="container">
+      <div class="adventures-header">
+        <span class="eyebrow">Explore the Area</span>
+        <h2>Adventures to be had.</h2>
+        <p>Lay-Z Bone Lodge puts you within reach of some of Northern California's most spectacular outdoor experiences — in every season.</p>
+      </div>
+      <div class="adventures-grid">
+        <div class="adv-card">
+          <div class="adv-dist">21 miles away</div>
+          <div class="adv-name"><a href="https://www.bearvalley.com" target="_blank" rel="noopener">Bear Valley Ski Resort</a></div>
+          <div class="adv-desc">Hit the slopes in winter — skiing, snowboarding, and lessons for all levels in the high Sierra.</div>
+        </div>
+        <div class="adv-card">
+          <div class="adv-dist">24 miles away</div>
+          <div class="adv-name"><a href="https://www.fs.usda.gov/r05/stanislaus/recreation/lake-alpine-recreation-area" target="_blank" rel="noopener">Lake Alpine</a></div>
+          <div class="adv-desc">Crystal-clear alpine waters for fishing, kayaking, paddleboarding, and hiking the surrounding peaks.</div>
+        </div>
+        <div class="adv-card">
+          <div class="adv-dist">23 miles away</div>
+          <div class="adv-name"><a href="https://moaningcaverns.com/" target="_blank" rel="noopener">Moaning Caverns</a></div>
+          <div class="adv-desc">Explore one of California's largest caverns — zip down on a rappel adventure or take a guided walking tour.</div>
+        </div>
+        <div class="adv-card">
+          <div class="adv-dist">25 miles away</div>
+          <div class="adv-name"><a href="https://www.gocalaveras.com/business/outdoor-recreation/natural-bridges/" target="_blank" rel="noopener">Natural Bridges</a></div>
+          <div class="adv-desc">Hike to stunning rock arch formations carved by the Stanislaus River — a hidden Sierra gem.</div>
+        </div>
+        <div class="adv-card">
+          <div class="adv-dist">18 miles away</div>
+          <div class="adv-name"><a href="https://visitmurphys.com/" target="_blank" rel="noopener">Murphys Wine Country</a></div>
+          <div class="adv-desc">Discover award-winning tasting rooms along the Gold Rush wine trail, including Ironstone Winery.</div>
+        </div>
+        <div class="adv-card">
+          <div class="adv-dist">Minutes Away</div>
+          <div class="adv-name"><a href="https://www.bigtreesvillage.org/recreation-center-activity-page" target="_blank" rel="noopener">Big Trees Rec Center</a></div>
+          <div class="adv-desc">Two pools, tennis courts, bocce, disc golf, basketball, and a playground — all included with your stay.</div>
+        </div>
+        <div class="adv-card">
+          <div class="adv-dist">Minutes Away</div>
+          <div class="adv-name"><a href="https://www.theluberoom.com/" target="_blank" rel="noopener">The Lube Room</a></div>
+          <div class="adv-desc">An old western bar with serious character — cold drinks, great burgers, and live music. The perfect spot to unwind after a day on the slopes or the trails.</div>
+        </div>
+        <div class="adv-card">
+          <div class="adv-dist">Minutes Away</div>
+          <div class="adv-name"><a href="https://www.parks.ca.gov/?page_id=551" target="_blank" rel="noopener">Big Trees State Park</a></div>
+          <div class="adv-desc">Stand among two ancient groves of giant sequoias — among the tallest trees on the planet. Hike the North and South Grove trails, fish the Stanislaus River, and discover why these trees have awed visitors since 1852.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ REVIEWS ════════════════════════════════════ -->
+  <section class="section reviews-section">
+    <div class="container">
+      <div class="reviews-center">
+        <span class="eyebrow">Guest Reviews</span>
+        <div class="reviews-big">5.0</div>
+        <div class="reviews-stars">★★★★★</div>
+        <div class="reviews-sub">Based on 15 verified guest reviews · 100% five-star</div>
+        <div class="guest-fav">⭐ Airbnb Guest Favorite</div>
+      </div>
+      <div class="review-cards">
+        <div class="rv-card">
+          <div class="rv-stars">★★★★★</div>
+          <p class="rv-quote">This house was incredible! Our two families had such a great time. The house has everything you could need and more. The kids loved the game room and the loft. Would 100% book again!</p>
+          <div class="rv-author">K., Alameda CA</div>
+          <div class="rv-meta">March 2026 · Stayed with kids</div>
+        </div>
+        <div class="rv-card">
+          <div class="rv-stars">★★★★★</div>
+          <p class="rv-quote">Phenomenal experience, would absolutely stay here again. The place was clean, well kept, comfortable and adorable.</p>
+          <div class="rv-author">R., Brentwood CA</div>
+          <div class="rv-meta">January 2025 · Stayed with kids</div>
+        </div>
+        <div class="rv-card">
+          <div class="rv-stars">★★★★★</div>
+          <p class="rv-quote">Wonderful property — lots of helpful features for a family vacation, from an amazing living room, game room, great wifi, fully stocked kitchen, and comfy beds. Definitely worth it.</p>
+          <div class="rv-author">J., Seaside CA</div>
+          <div class="rv-meta">November 2024 · Group trip</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ BOOK CTA ════════════════════════════════════ -->
+  <section class="book-section">
+    <div class="container">
+      <span class="eyebrow">Ready to Escape?</span>
+      <h2>Book Your Stay</h2>
+      <p>Check availability and reserve your dates through Sierra Vacation Rentals, Airbnb, or VRBO.</p>
+      <div class="book-btns">
+        <a href="https://www.sierravacationrentals.com/vacation-rentals/lay-z-bone-lodge-central-heat" target="_blank" rel="noopener" class="book-btn">Book via Sierra Vacation Rentals</a>
+        <a href="https://www.airbnb.com/rooms/860140988473111197" target="_blank" rel="noopener" class="book-btn book-btn-alt">Book via Airbnb</a>
+        <a href="https://www.vrbo.com/9811188ha" target="_blank" rel="noopener" class="book-btn book-btn-alt">Book via VRBO</a>
+      </div>
+      <div class="book-details">
+        <div class="book-detail"><div class="book-detail-val">$300</div><div class="book-detail-lbl">Deposit at Booking</div></div>
+        <div class="book-detail"><div class="book-detail-val">25+</div><div class="book-detail-lbl">Min. Renter Age</div></div>
+        <div class="book-detail"><div class="book-detail-val">No Pets</div><div class="book-detail-lbl">Pet-Free Property</div></div>
+        <div class="book-detail"><div class="book-detail-val">2–4 Days</div><div class="book-detail-lbl">Before Check-In Access Sent</div></div>
+      </div>
+      <p class="book-note">Balance due 30 days prior to arrival &nbsp;·&nbsp; Check payments accepted 45+ days before arrival</p>
+    </div>
+  </section>
+
+  <!-- ═══ FOOTER ══════════════════════════════════════ -->
+  <footer>
+    <div class="footer-grid">
+      <div>
+        <span class="footer-brand">Lay-Z Bone Lodge</span>
+        <p class="footer-tagline">A chalet-style Sierra Nevada escape in Big Trees/Dorrington, California. Managed by Sierra Vacation Rentals &amp; Dorrington Realty.</p>
+      </div>
+      <div>
+        <p class="footer-h">Quick Links</p>
+        <ul class="footer-list">
+          <li><a href="#about">The Cabin</a></li>
+          <li><a href="#amenities">Amenities</a></li>
+          <li><a href="#adventures">Explore the Area</a></li>
+          <li><a href="https://www.sierravacationrentals.com/vacation-rentals/lay-z-bone-lodge-central-heat" target="_blank" rel="noopener">Book Now</a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="footer-h">Contact</p>
+        <span class="contact-line">Sierra Vacation Rentals</span>
+        <span class="contact-line">21 Boards Crossing Road</span>
+        <span class="contact-line">Dorrington, CA 95223</span>
+        <span class="contact-line">📞 209-795-3298</span>
+        <span class="contact-line">✉️ sierravacationrentals@gmail.com</span>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span class="footer-legal">© 2025 Lay-Z Bone Lodge &nbsp;·&nbsp; Managed by Sierra Vacation Rentals &amp; Dorrington Realty</span>
+      <span class="footer-legal">Big Trees / Dorrington, CA</span>
+    </div>
+  </footer>
+
+  <!-- ═══ LIGHTBOX ════════════════════════════════════ -->
+  <div id="lightbox" class="lb" role="dialog" aria-modal="true" aria-label="Photo viewer">
+    <button class="lb-close" id="lbClose" aria-label="Close">×</button>
+    <button class="lb-prev"  id="lbPrev"  aria-label="Previous photo">‹</button>
+    <button class="lb-next"  id="lbNext"  aria-label="Next photo">›</button>
+    <div class="lb-stage">
+      <div class="lb-img-wrap">
+        <img class="lb-img" id="lbImg" src="" alt="">
+        <div class="lb-placeholder" id="lbPlaceholder">
+          <span class="lb-placeholder-label" id="lbPlaceholderLabel"></span>
+        </div>
+      </div>
+      <div class="lb-footer">
+        <span class="lb-caption" id="lbCaption"></span>
+        <span class="lb-counter" id="lbCounter"></span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ SCRIPTS ═════════════════════════════════════ -->
+  <script>
+    // ── Sticky nav ──────────────────────────────────
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('pinned', window.scrollY > 60);
+    }, { passive: true });
+
+    // ── Lightbox ────────────────────────────────────
+    const lb         = document.getElementById('lightbox');
+    const lbImg      = document.getElementById('lbImg');
+    const lbPH       = document.getElementById('lbPlaceholder');
+    const lbPHLabel  = document.getElementById('lbPlaceholderLabel');
+    const lbCaption  = document.getElementById('lbCaption');
+    const lbCounter  = document.getElementById('lbCounter');
+    const lbClose    = document.getElementById('lbClose');
+    const lbPrev     = document.getElementById('lbPrev');
+    const lbNext     = document.getElementById('lbNext');
+
+    const cells = Array.from(document.querySelectorAll('.gc'));
+    const items = cells.map(el => ({
+      src:      el.dataset.src      || '',
+      caption:  el.dataset.caption  || '',
+      gradient: el.dataset.gradient || 'linear-gradient(145deg,#2C4A1E,#4A7A35)'
+    }));
+    let current = 0;
+
+    function showPlaceholder(item) {
+      lbImg.style.display   = 'none';
+      lbPH.style.background = item.gradient;
+      lbPH.style.display    = 'flex';
+      lbPHLabel.textContent = item.caption;
+    }
+    function show(index) {
+      const item = items[index];
+      lbCaption.textContent = item.caption;
+      lbCounter.textContent = `${index + 1} / ${items.length}`;
+      if (item.src) {
+        lbPH.style.display = 'none';
+        lbImg.classList.remove('loaded');
+        lbImg.style.display = 'block';
+        lbImg.alt = item.caption;
+        lbImg.onload  = () => lbImg.classList.add('loaded');
+        lbImg.onerror = () => showPlaceholder(item);
+        lbImg.src = item.src;
+      } else {
+        showPlaceholder(item);
+      }
+    }
+    function open(index) {
+      current = index; show(current);
+      lb.classList.add('active');
+      document.body.style.overflow = 'hidden';
+      lbClose.focus();
+    }
+    function close() {
+      lb.classList.remove('active');
+      document.body.style.overflow = '';
+      lbImg.src = '';
+    }
+    function prev() { current = (current - 1 + items.length) % items.length; show(current); }
+    function next() { current = (current + 1) % items.length; show(current); }
+
+    cells.forEach((el, i) => el.addEventListener('click', () => open(i)));
+    lbClose.addEventListener('click', close);
+    lbPrev.addEventListener('click',  e => { e.stopPropagation(); prev(); });
+    lbNext.addEventListener('click',  e => { e.stopPropagation(); next(); });
+    lb.addEventListener('click', e => { if (e.target === lb) close(); });
+    document.addEventListener('keydown', e => {
+      if (!lb.classList.contains('active')) return;
+      if (e.key === 'Escape')     close();
+      if (e.key === 'ArrowLeft')  prev();
+      if (e.key === 'ArrowRight') next();
+    });
+    let swipeStartX = 0;
+    lb.addEventListener('touchstart', e => { swipeStartX = e.touches[0].clientX; }, { passive: true });
+    lb.addEventListener('touchend',   e => {
+      const dx = e.changedTouches[0].clientX - swipeStartX;
+      if (Math.abs(dx) > 50) dx < 0 ? next() : prev();
+    }, { passive: true });
+  </script>
+
+</body>
+</html>
