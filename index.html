@@ -210,6 +210,14 @@
     .img-main { aspect-ratio: 4/3; background: linear-gradient(145deg, #2C4A1E 0%, #4A7A35 50%, #8B6547 100%); }
     .img-secondary { position: absolute; bottom: 0; right: 0; width: 52%; aspect-ratio: 1; background: linear-gradient(145deg, #8B6547 0%, #C49A70 100%); border: 5px solid var(--cream); }
     .img-cap { position: absolute; bottom: .9rem; left: .9rem; background: rgba(15,31,10,.55); color: rgba(255,255,255,.85); font-size: .68rem; padding: .28rem .65rem; border-radius: 3px; letter-spacing: .05em; backdrop-filter: blur(6px); }
+    .slideshow { position: relative; }
+    .slideshow .slide { position: absolute; inset: 0; opacity: 0; transition: opacity 1s ease-in-out; }
+    .slideshow .slide:first-child { position: relative; }
+    .slideshow .slide.active { opacity: 1; z-index: 1; }
+    .slideshow .slide img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .slideshow-dots { position: absolute; bottom: .75rem; left: 50%; transform: translateX(-50%); display: flex; gap: .45rem; z-index: 2; }
+    .slideshow-dots button { width: 7px; height: 7px; border-radius: 50%; border: none; background: rgba(255,255,255,.45); cursor: pointer; padding: 0; transition: background .3s, transform .3s; }
+    .slideshow-dots button.active { background: rgba(255,255,255,.95); transform: scale(1.25); }
 
     /* ── Overachiever / Underachiever ───────────── */
     .oa-section { background: var(--green-dark); }
@@ -489,9 +497,21 @@
         </div>
 
         <div class="img-stack">
-          <div class="img-card img-main">
-            <img src="photos/living-room-thumb.jpg" alt="Lay-Z Bone Lodge living room" style="width:100%;height:100%;object-fit:cover;">
-            <span class="img-cap">Living Room</span>
+          <div class="img-card img-main slideshow" id="about-slideshow">
+            <div class="slide active">
+              <img src="photos/living-room-thumb.jpg" alt="Living Room" loading="eager">
+            </div>
+            <div class="slide">
+              <img src="photos/kitchen-1.jpg" alt="Kitchen" loading="lazy">
+            </div>
+            <div class="slide">
+              <img src="photos/master-bedroom-2.jpg" alt="Master Bedroom" loading="lazy">
+            </div>
+            <div class="slideshow-dots">
+              <button class="active" aria-label="Slide 1"></button>
+              <button aria-label="Slide 2"></button>
+              <button aria-label="Slide 3"></button>
+            </div>
           </div>
           </div>
         </div>
@@ -937,6 +957,34 @@
       const dx = e.changedTouches[0].clientX - swipeStartX;
       if (Math.abs(dx) > 50) dx < 0 ? next() : prev();
     }, { passive: true });
+  </script>
+
+  <script>
+    (function() {
+      const ss     = document.getElementById('about-slideshow');
+      const slides = ss.querySelectorAll('.slide');
+      const dots   = ss.querySelectorAll('.slideshow-dots button');
+      let current  = 0;
+      let timer;
+
+      function goTo(n) {
+        slides[current].classList.remove('active');
+        dots[current].classList.remove('active');
+        current = (n + slides.length) % slides.length;
+        slides[current].classList.add('active');
+        dots[current].classList.add('active');
+      }
+
+      function start() {
+        timer = setInterval(() => goTo(current + 1), 5000);
+      }
+
+      dots.forEach((dot, i) => {
+        dot.addEventListener('click', () => { clearInterval(timer); goTo(i); start(); });
+      });
+
+      start();
+    })();
   </script>
 
 </body>
