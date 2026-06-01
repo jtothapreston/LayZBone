@@ -1031,5 +1031,12 @@
     })();
   </script>
 
+  <script>
+    document.querySelector('.more-photos-link').addEventListener('click', function(e) {
+      e.preventDefault();
+      document.getElementById('gallery').scrollIntoView({ behavior: 'smooth' });
+    });
+  </script>
+
 </body>
 </html>
