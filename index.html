@@ -219,6 +219,10 @@
     .slideshow-dots button { width: 7px; height: 7px; border-radius: 50%; border: none; background: rgba(255,255,255,.45); cursor: pointer; padding: 0; transition: background .3s, transform .3s; }
     .slideshow-dots button.active { background: rgba(255,255,255,.95); transform: scale(1.25); }
 
+    .about-scroll { display: flex; flex-direction: column; align-items: center; gap: .45rem; color: var(--green-dark); font-size: .68rem; letter-spacing: .2em; text-transform: uppercase; text-decoration: none; margin: 2.5rem auto 0; width: fit-content; }
+    .about-scroll-bar { width: 1px; height: 44px; background: linear-gradient(to bottom, var(--green-dark), transparent); animation: pulse 2.2s ease-in-out infinite; }
+    .about-scroll svg { animation: pulse 2.2s ease-in-out infinite; }
+
     /* ── Overachiever / Underachiever ───────────── */
     .oa-section { background: var(--green-dark); }
     .oa-header { text-align: center; margin-bottom: 3.5rem; }
@@ -507,15 +511,28 @@
             <div class="slide">
               <img src="photos/master-bedroom-2.jpg" alt="Master Bedroom" loading="lazy">
             </div>
+            <div class="slide">
+              <img src="photos/master-bath-1.jpg" alt="Master Bath" loading="lazy">
+            </div>
+            <div class="slide">
+              <img src="photos/game-room-full.jpg" alt="Game Room" loading="lazy">
+            </div>
             <div class="slideshow-dots">
               <button class="active" aria-label="Slide 1"></button>
               <button aria-label="Slide 2"></button>
               <button aria-label="Slide 3"></button>
+              <button aria-label="Slide 4"></button>
+              <button aria-label="Slide 5"></button>
             </div>
           </div>
           </div>
         </div>
       </div>
+      <a href="#gallery" class="about-scroll">
+        More Photos
+        <div class="about-scroll-bar"></div>
+        <svg width="12" height="7" viewBox="0 0 12 7" fill="none" xmlns="http://www.w3.org/2000/svg"><polyline points="1,1 6,6 11,1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
     </div>
   </section>
 
