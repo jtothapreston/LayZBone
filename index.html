@@ -29,7 +29,7 @@
       null;
     if (!channel) return;
 
-    gtag('event', 'generate_lead', {
+    gtag('event', 'booking_click', {
       booking_channel: channel,
       link_url: href,
       link_text: (a.textContent || '').replace(/\s+/g, ' ').trim().slice(0, 80)
