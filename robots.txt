@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /Other/
+Disallow: /pattern-preview.html
+
+Sitemap: https://layzbonelodge.com/sitemap.xml
