@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Lay-Z Bone Lodge | Cabin Rental in Arnold, CA — Sleeps 9, Game Room</title>
-  <meta name="description" content="Vintage camp vibes meet modern amenities at Lay-Z Bone Lodge near Arnold, in Big Trees/Dorrington, CA. 3BR, sleeps 9. Game room, fireplace, jetted tub, and endless Sierra adventures.">
+  <meta name="description" content="Chalet-style cabin near Arnold, CA in Big Trees Village. 3BR, sleeps 9 — extra-large game room, fireplace, jetted tub, rec center pool access, and year-round Sierra adventures.">
 
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-W85CV3WB90"></script>
@@ -14,6 +14,27 @@
     gtag('js', new Date());
 
     gtag('config', 'G-W85CV3WB90');
+  </script>
+
+  <script>
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest && e.target.closest('a');
+    if (!a || !a.href) return;
+
+    var href = a.href;
+    var channel =
+      href.indexOf('sierravacationrentals.com') !== -1 ? 'sierra' :
+      href.indexOf('airbnb.com') !== -1 ? 'airbnb' :
+      href.indexOf('vrbo.com') !== -1 ? 'vrbo' :
+      null;
+    if (!channel) return;
+
+    gtag('event', 'generate_lead', {
+      booking_channel: channel,
+      link_url: href,
+      link_text: (a.textContent || '').replace(/\s+/g, ' ').trim().slice(0, 80)
+    });
+  }, true);
   </script>
 
   <!-- Meta Pixel -->
@@ -32,16 +53,16 @@
   <meta property="og:type"        content="website">
   <meta property="og:url"         content="https://layzbonelodge.com">
   <meta property="og:site_name"   content="Lay-Z Bone Lodge">
-  <meta property="og:title"       content="Lay-Z Bone Lodge — Big Trees, California">
-  <meta property="og:description" content="A vintage Sierra Nevada escape in Big Trees/Dorrington, CA. 3BR cabin sleeps 9 — game room, fireplace, jetted tub, pool access &amp; endless outdoor adventures.">
+  <meta property="og:title"       content="Lay-Z Bone Lodge | Cabin Rental in Arnold, CA — Sleeps 9, Game Room">
+  <meta property="og:description" content="Chalet-style cabin near Arnold, CA in Big Trees Village. 3BR, sleeps 9 — extra-large game room, fireplace, jetted tub, rec center pool access, and year-round Sierra adventures.">
   <meta property="og:image"       content="https://layzbonelodge.com/photos/living-room-thumb.jpeg">
   <meta property="og:image:width"  content="717">
   <meta property="og:image:height" content="558">
 
   <!-- Twitter Card -->
   <meta name="twitter:card"        content="summary_large_image">
-  <meta name="twitter:title"       content="Lay-Z Bone Lodge — Big Trees, California">
-  <meta name="twitter:description" content="A vintage Sierra Nevada escape in Big Trees/Dorrington, CA. 3BR cabin sleeps 9 — game room, fireplace, jetted tub, pool access &amp; endless outdoor adventures.">
+  <meta name="twitter:title"       content="Lay-Z Bone Lodge | Cabin Rental in Arnold, CA — Sleeps 9, Game Room">
+  <meta name="twitter:description" content="Chalet-style cabin near Arnold, CA in Big Trees Village. 3BR, sleeps 9 — extra-large game room, fireplace, jetted tub, rec center pool access, and year-round Sierra adventures.">
   <meta name="twitter:image"       content="https://layzbonelodge.com/photos/living-room-thumb.jpeg">
   <link rel="icon" type="image/x-icon" href="photos/favicon.ico">
   <link rel="icon" type="image/svg+xml" href="photos/favicon.svg">
